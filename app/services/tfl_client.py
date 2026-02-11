@@ -3,7 +3,7 @@ from app.config import TFL_API_KEY, TFL_BASE_URL
 from app.logger import logger
 
 
-async def get_nearby_stop_points(lat: float, lon: float, radius: int = 500):
+async def get_nearby_stop_points(lat: float, lon: float, radius: int = 800):
     logger.info(f"Fetching nearby stop points for lat={lat}, lon={lon}")
 
     url = f"{TFL_BASE_URL}/StopPoint"
@@ -11,7 +11,7 @@ async def get_nearby_stop_points(lat: float, lon: float, radius: int = 500):
         "lat": lat,
         "lon": lon,
         "radius": radius,
-        "stopTypes": "NaptanMetroStation",
+        "stopTypes": "NaptanMetroStation,NaptanPublicBusCoachTram",
         "app_key": TFL_API_KEY,
     }
 
